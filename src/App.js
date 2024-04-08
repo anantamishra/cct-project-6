@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/main" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
