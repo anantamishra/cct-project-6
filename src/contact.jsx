@@ -13,7 +13,7 @@ const blogs = [
   },
   {
     id: 2,
-    title: "Google",
+    title: "Instagram",
     excerpt: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis atque laboriosam quam, ipsa quo, eos assumenda delectus, autem qui dicta corporis iusto officiis porro dolores eius quaerat praesentium officia nihil?`,
     tags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6"],
     authorName: "Ram Subedi",
@@ -23,7 +23,7 @@ const blogs = [
   },
   {
     id: 3,
-    title: "Google",
+    title: "Twitter",
     excerpt: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis atque laboriosam quam, ipsa quo, eos assumenda delectus, autem qui dicta corporis iusto officiis porro dolores eius quaerat praesentium officia nihil?`,
     tags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6"],
     authorName: "Ram Subedi",
@@ -33,7 +33,7 @@ const blogs = [
   },
   {
     id: 4,
-    title: "Google",
+    title: "Facebook",
     excerpt: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis atque laboriosam quam, ipsa quo, eos assumenda delectus, autem qui dicta corporis iusto officiis porro dolores eius quaerat praesentium officia nihil?`,
     tags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6"],
     authorName: "Ram Subedi",
@@ -44,26 +44,51 @@ const blogs = [
 ];
 
 export default function Contact() {
+  console.log(blogs);
   return (
     <div style={{ display: "flex", gap: "10px" }}>
       {blogs.map((blog) => {
-        return <BlogCard />;
+        return (
+          <div>
+            <BlogCard
+              id={blog.id}
+              title={blog.title}
+              description={blog.excerpt}
+              tags={blog.tags}
+              publishedDate={blog.publishedDate}
+              authorName={blog.authorName}
+              imageUrl={blog.imageUrl}
+            />
+          </div>
+        );
       })}
     </div>
   );
 }
 
-const BlogCard = (props) => {
+const BlogCard = ({
+  id,
+  title,
+  description,
+  tags,
+  publishedDate,
+  authorName,
+  imageUrl,
+}) => {
   return (
-    <div>
+    <div key={id}>
       <div>
-        {props.title}
-        {props.description}
-        {props.tags}
-        {props.publishedDate}
-        {props.authorName}
+        <h2 className="text-blue-600 text-3xl">{title}</h2>
+        <p>{description}</p>
+        <ul>
+          {tags.map((tag, index) => (
+            <li key={index}>{tag}</li>
+          ))}
+        </ul>
+        <p>{publishedDate}</p>
+        <p>{authorName}</p>
       </div>
-      <img src={props.imageUrl} alt={props.title} />
+      <img src={imageUrl} alt={title} />
     </div>
   );
 };

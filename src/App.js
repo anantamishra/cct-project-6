@@ -3,6 +3,7 @@ import Home from "./home";
 import Contact from "./contact";
 import About from "./about";
 import NotFoundPage from "./NotFoundPage";
+import './App.css'
 
 function App() {
   return (
